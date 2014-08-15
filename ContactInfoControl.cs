@@ -7,7 +7,6 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using eastsussexgovuk.webservices.TextXhtml.HouseStyle;
 using Escc.AddressAndPersonalDetails.Controls.Properties;
-using EsccWebTeam.Gdsc;
 
 namespace Escc.AddressAndPersonalDetails.Controls
 {

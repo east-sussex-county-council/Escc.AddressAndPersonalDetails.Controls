@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Escc.AddressAndPersonalDetails.Controls</RootNamespace>
     <AssemblyName>Escc.AddressAndPersonalDetails.Controls</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <AssemblyOriginatorKeyFile>s:\_strong names\esccdev.snk</AssemblyOriginatorKeyFile>
@@ -43,9 +43,6 @@
     <Reference Include="Escc.AddressAndPersonalDetails">
       <HintPath>..\..\Solution files\eastsussex.gov.uk solutions\EsccWebTeam.Website.Solution\packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
-    <Reference Include="EsccWebTeam.HouseStyle">
-      <HintPath>..\Escc.HouseStyle\bin\Release\EsccWebTeam.HouseStyle.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web">
       <HintPath>C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Web.dll</HintPath>
@@ -67,6 +64,10 @@
     <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
+      <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>
+      <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

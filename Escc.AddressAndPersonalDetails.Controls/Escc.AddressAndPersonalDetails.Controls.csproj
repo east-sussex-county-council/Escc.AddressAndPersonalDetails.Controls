@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Escc.AddressAndPersonalDetails">
-      <HintPath>packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web">
@@ -61,11 +61,11 @@
     <Compile Include="SimpleAddressControl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
+    <ProjectReference Include="..\..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9c56d3dd-4952-4a1b-9ad6-907a1142872f}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
+    <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1c429378-dbf2-4af7-88ac-c059aa163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
@@ -80,12 +80,7 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE.md" />
     <None Include="packages.config" />
-    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

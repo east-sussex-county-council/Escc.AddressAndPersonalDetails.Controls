@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using eastsussexgovuk.webservices.TextXhtml.HouseStyle;
 using Escc.AddressAndPersonalDetails.Controls.Properties;
+using Escc.Html;
 
 namespace Escc.AddressAndPersonalDetails.Controls
 {
@@ -27,7 +27,6 @@ namespace Escc.AddressAndPersonalDetails.Controls
         private string name;
         private string description;
         private string emailText;
-        private bool useEmailForm;
         private string addressUrlText;
         private string websiteText;
         private string pageDisplayName;
@@ -267,19 +266,9 @@ namespace Escc.AddressAndPersonalDetails.Controls
         }
 
         /// <summary>
-        /// Gets or sets whether to link to an email form, rather than an actual email address
+        /// Gets or sets a transformer which can change the way email addresses are linked
         /// </summary>
-        public bool UseEmailForm
-        {
-            get
-            {
-                return this.useEmailForm;
-            }
-            set
-            {
-                this.useEmailForm = value;
-            }
-        }
+        public IEmailAddressTransformer EmailAddressTransformer { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the email recipient
@@ -554,9 +543,10 @@ namespace Escc.AddressAndPersonalDetails.Controls
                         string emailLinkText;
                         string emailHref;
                         string emailClass = String.Empty;
+                        var encoder = new HtmlEncoder();
                         if (visibleAddress)
                         {
-                            emailLinkText = UriFormatter.ConvertEmailToEntities(this.emailAddress);
+                            emailLinkText = encoder.HtmlEncode(this.emailAddress);
                         }
                         else
                         {
@@ -564,31 +554,26 @@ namespace Escc.AddressAndPersonalDetails.Controls
                         }
 
                         // Link can be to email address, or to email form
-                        if (this.useEmailForm)
+                        if (EmailAddressTransformer != null)
                         {
-                            Uri formUrl;
-                            if (visibleAddress)
+                            var addressToTransform = new ContactEmail(this.emailAddress);
+                            if (!visibleAddress)
                             {
-                                formUrl = UriFormatter.GetWebsiteEmailFormUri(this.emailAddress, this.emailAddress,
-                                    Context.Request.Url);
+                                addressToTransform.DisplayName = this.emailText;
+                            }
+                            var transformedEmail = EmailAddressTransformer.TransformEmailAddress(addressToTransform);
+                            if (transformedEmail != null)
+                            {
+                                emailHref = HttpUtility.HtmlEncode(transformedEmail);
                             }
                             else
                             {
-                                formUrl = UriFormatter.GetWebsiteEmailFormUri(this.emailAddress, this.emailText,
-                                    Context.Request.Url);
-                            }
-                            if (formUrl != null)
-                            {
-                                emailHref = HttpUtility.HtmlEncode(formUrl.ToString());
-                            }
-                            else
-                            {
-                                emailHref = UriFormatter.ConvertEmailToEntities(this.emailAddress, true);
+                                emailHref = encoder.HtmlEncode("mailto:" + this.emailAddress);
                             }
                         }
                         else
                         {
-                            emailHref = UriFormatter.ConvertEmailToEntities(this.emailAddress, true);
+                            emailHref = encoder.HtmlEncode("mailto:" + this.emailAddress);
                             emailClass = "email"; // hCard
                         }
 

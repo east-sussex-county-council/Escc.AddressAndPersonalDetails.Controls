@@ -546,7 +546,7 @@ namespace Escc.AddressAndPersonalDetails.Controls
                         var encoder = new HtmlEncoder();
                         if (visibleAddress)
                         {
-                            emailLinkText = encoder.HtmlEncode(this.emailAddress);
+                            emailLinkText = encoder.HtmlEncodeEveryCharacter(this.emailAddress);
                         }
                         else
                         {
@@ -568,12 +568,12 @@ namespace Escc.AddressAndPersonalDetails.Controls
                             }
                             else
                             {
-                                emailHref = encoder.HtmlEncode("mailto:" + this.emailAddress);
+                                emailHref = encoder.HtmlEncodeEveryCharacter("mailto:" + this.emailAddress);
                             }
                         }
                         else
                         {
-                            emailHref = encoder.HtmlEncode("mailto:" + this.emailAddress);
+                            emailHref = encoder.HtmlEncodeEveryCharacter("mailto:" + this.emailAddress);
                             emailClass = "email"; // hCard
                         }
 
@@ -618,8 +618,7 @@ namespace Escc.AddressAndPersonalDetails.Controls
                         webLink.Attributes["class"] = "url";
                         if (showWebUrl)
                         {
-                            webLink.InnerHtml = EsccWebTeam.Data.Web.Iri.ShortenForDisplay(this.website);
-
+                            webLink.InnerHtml = new HtmlLinkFormatter().AbbreviateUrl(this.website);
                         }
                         else
                         {

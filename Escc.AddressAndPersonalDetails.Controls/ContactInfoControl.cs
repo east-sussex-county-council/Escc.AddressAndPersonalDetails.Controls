@@ -453,7 +453,7 @@ namespace Escc.AddressAndPersonalDetails.Controls
                                     // handle backToUrl separately to ensure the page is valid. GetWebsiteMapUri correctly UrlEncodes it, 
                                     // but it returns it as a Uri object which UrlDecodes it again
                                     mapPageUrl = GetWebsiteMapUrl(this.bs7666Address, this.pageDisplayName, this.PageUrl);
-                                    //if (gisMapUrl != null) gisMapUrl.ToString() + "&backToUrl=" + HttpUtility.UrlEncode(.ToString());
+                                    //if (gisMapUrl != null) gisMapUrl.ToString() + "&backToUrl=" + Uri.EscapeDataString(.ToString());
                                 }
                                 if (mapPageUrl != null)
                                 {
@@ -679,17 +679,20 @@ namespace Escc.AddressAndPersonalDetails.Controls
             // Build up URL
             StringBuilder url = new StringBuilder(Uri.UriSchemeHttp).Append("://").Append(host).Append("/contactus/map.aspx");
 
-            url.Append("?postcode=").Append(HttpUtility.UrlEncode(address.Postcode));
-            url.Append("&e=").Append(HttpUtility.UrlEncode(address.GridEasting.ToString(CultureInfo.CurrentCulture)));
-            url.Append("&n=").Append(HttpUtility.UrlEncode(address.GridNorthing.ToString(CultureInfo.CurrentCulture)));
+            url.Append("?postcode=").Append(Uri.EscapeDataString(address.Postcode));
+            if (address.GeoCoordinate != null)
+            {
+                url.Append("&e=").Append(Uri.EscapeDataString(address.GeoCoordinate.Easting.ToString(CultureInfo.CurrentCulture)));
+                url.Append("&n=").Append(Uri.EscapeDataString(address.GeoCoordinate.Northing.ToString(CultureInfo.CurrentCulture)));
+            }
 
-            if (address.Paon != null && address.Paon.Length > 0) url.Append("&paon=").Append(HttpUtility.UrlEncode(address.Paon));
+            if (address.Paon != null && address.Paon.Length > 0) url.Append("&paon=").Append(Uri.EscapeDataString(address.Paon));
 
-            url.Append("&mapOf=").Append(HttpUtility.UrlEncode(HttpUtility.HtmlDecode(address.GetSimpleAddress().ToString())));
+            url.Append("&mapOf=").Append(Uri.EscapeDataString(HttpUtility.HtmlDecode(address.GetSimpleAddress().ToString())));
 
-            if (returnUrl != null) url.Append("&backToUrl=").Append(HttpUtility.UrlEncode(returnUrl.ToString()));
+            if (returnUrl != null) url.Append("&backToUrl=").Append(Uri.EscapeDataString(returnUrl.ToString()));
 
-            if (displayName != null && displayName.Length > 0) url.Append("&backTo=").Append(HttpUtility.UrlEncode(displayName));
+            if (displayName != null && displayName.Length > 0) url.Append("&backTo=").Append(Uri.EscapeDataString(displayName));
 
             return url.ToString();
         }

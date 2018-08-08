@@ -277,6 +277,15 @@ namespace Escc.AddressAndPersonalDetails.Controls
         }
 
         /// <summary>
+        /// Creates the child controls on demand
+        /// </summary>
+        /// <remarks>Used when creating the control outside the context of a web page</remarks>
+        public void CreateControls()
+        {
+            this.EnsureChildControls();
+        }
+
+        /// <summary>
         /// Highlights the PAF "Format 1 name" (ie: building number) at the start of an address component, if there is one.
         /// </summary>
         /// <param name="xhtml">The XHTML which may contain the format 1 name.</param>

@@ -33,6 +33,7 @@ namespace Escc.AddressAndPersonalDetails.Controls
         private Uri pageUrl;
         private Uri mapUrl;
         private UKContactNumberCollection telephones = new UKContactNumberCollection();
+        private SimpleAddressControl addressControl;
 
         #endregion // Private member vars
 
@@ -435,12 +436,12 @@ namespace Escc.AddressAndPersonalDetails.Controls
                         if (this.bs7666Address.HasAddress())
                         {
                             ContactInfoControl.StartOnNewLine(part1);
-                            using (SimpleAddressControl addr = new SimpleAddressControl(this.bs7666Address))
+                            using (this.addressControl = new SimpleAddressControl(this.bs7666Address))
                             {
                                 // control implements hCard/adr microformat
-                                addr.CssClass = "location"; // hCalendar
-                                addr.Separator = SimpleAddressControl.SeparatorHCalendar;
-                                part1.Controls.Add(addr);
+                                this.addressControl.CssClass = "location"; // hCalendar
+                                this.addressControl.Separator = SimpleAddressControl.SeparatorHCalendar;
+                                part1.Controls.Add(this.addressControl);
                             }
 
                             // link to map
@@ -707,10 +708,11 @@ namespace Escc.AddressAndPersonalDetails.Controls
         /// <summary>
         /// Creates the child controls on demand
         /// </summary>
-        /// <remarks>Used when creating the control outside the context of a web page, eg to create an RSS feed</remarks>
+        /// <remarks>Used when creating the control outside the context of a web page</remarks>
         public void CreateControls()
         {
             this.EnsureChildControls();
+            if (this.addressControl != null) this.addressControl.CreateControls();
         }
         #endregion // CreateChildControls
 

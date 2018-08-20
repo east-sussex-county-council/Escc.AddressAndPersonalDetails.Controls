@@ -9,10 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Escc.AddressAndPersonalDetails.Controls</RootNamespace>
     <AssemblyName>Escc.AddressAndPersonalDetails.Controls</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <AssemblyOriginatorKeyFile>s:\_strong names\esccdev.snk</AssemblyOriginatorKeyFile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Solution files\eastsussex.gov.uk solutions\EsccWebTeam.Website.Solution\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -26,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>S:\_Standards\VS.net Code Analysis\EsccWebTeam.CodeAnalysis.Library.Strict.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,28 +35,25 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Escc.AddressAndPersonalDetails.Controls.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.AddressAndPersonalDetails.3.0.0\lib\net20\Escc.AddressAndPersonalDetails.dll</HintPath>
+    <Reference Include="Escc.AddressAndPersonalDetails, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.4.0.0\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.Html, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Web">
-      <HintPath>C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Web.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactInfoControl.cs" />
-    <Compile Include="IEmailAddressTransformer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

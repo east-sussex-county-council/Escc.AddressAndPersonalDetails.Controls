@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Escc.AddressAndPersonalDetails.Controls</RootNamespace>
     <AssemblyName>Escc.AddressAndPersonalDetails.Controls</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\Solution files\eastsussex.gov.uk solutions\EsccWebTeam.Website.Solution\</SolutionDir>
@@ -23,8 +23,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>S:\_Standards\VS.net Code Analysis\EsccWebTeam.CodeAnalysis.Library.Strict.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -41,8 +41,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Escc.AddressAndPersonalDetails, Version=4.0.1.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.AddressAndPersonalDetails.4.0.1\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
+    <Reference Include="Escc.AddressAndPersonalDetails, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.5.0.0\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
